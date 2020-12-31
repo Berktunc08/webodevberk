@@ -13,6 +13,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using webodevberk.Data;
 using webodevberk.Models;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace webodevberk
 {
@@ -34,7 +37,15 @@ namespace webodevberk
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            
+            
+            services.AddLocalization(options => options.ResourcesPath = "Resources"); //Çok dillilik için configler.
+            
+            
+            services.AddControllersWithViews()   //çok dillilik için configler.
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
+            
             services.AddRazorPages();
         }
 
@@ -54,7 +65,25 @@ namespace webodevberk
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             SeedProduct.Seed(app);
+
+            var supportedCultures = new List<CultureInfo>
+            {
+                new CultureInfo("tr-TR"),
+                 new CultureInfo("en-US")
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                SupportedUICultures=supportedCultures,
+                SupportedCultures=supportedCultures,
+                DefaultRequestCulture=new RequestCulture("tr-TR")
+
+            });
+                
+                
+
             app.UseRouting();
 
             app.UseAuthentication();
