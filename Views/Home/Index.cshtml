@@ -1,9 +1,12 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 style="color:red" class="display-4">TUNÇ ELEKTRONİK</h1>
+    <h1 style="color:red" class="display-4">@Localizer["TUNÇ ELEKTRONİK"]</h1>
 
 </div>
 <br />
@@ -13,10 +16,11 @@
     .carousel-inner img {
         width: 80%;
         height: 50%;
-        margin-left:100px;
+        margin-left: 100px;
     }
-    .carousel-inner{
-        margin-right:600px;
+
+    .carousel-inner {
+        margin-right: 600px;
     }
 </style>
 <div id="demo" class="carousel slide" data-ride="carousel">
@@ -54,16 +58,16 @@
 <br />
 <br />
 
-<h1 style="margin-left:250px">İNDİRİMDE OLAN ÜRÜNLERİMİZ</h1>
+<h1 style="margin-left:250px">@Localizer["İNDİRİMDE OLAN ÜRÜNLERİMİZ"]</h1>
 <br />
 <br />
 <div class="card-group">
     <div class="card">
-        <img src="~/img/monsterpc.jpg" class="card-img-top" alt="...">
+        <img src="~/img/Asuspc.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">ASUS</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text">@Localizer["Card1mesaj"]</p>
+            <p class="card-text"><small class="text-muted">@Localizer["Güncelleme Yazısı"]</small></p>
             <a href="/Products/Urunler" class="btn btn-primary">Ürüne Bak..</a>
         </div>
     </div>
@@ -71,17 +75,17 @@
         <img src="~/img/monsterpc.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">LENOVO</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text">@Localizer["Card2mesaj"]</p>
+            <p class="card-text"><small class="text-muted">@Localizer["Güncelleme Yazısı"]</small></p>
             <a href="/Products/Urunler" class="btn btn-primary">Ürüne Bak..</a>
         </div>
     </div>
     <div class="card">
-        <img src="~/img/monsterpc.jpg" class="card-img-top" alt="...">
+        <img src="~/img/Asuspc.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">MONSTER</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text">@Localizer["Card3mesaj"]</p>
+            <p class="card-text"><small class="text-muted">@Localizer["Güncelleme Yazısı"]</small></p>
             <a href="/Products/Urunler" class="btn btn-primary">Ürüne Bak..</a>
         </div>
     </div>

@@ -45,12 +45,14 @@ namespace webodevberk.Controllers
             return View(product);
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin,quest")]
         public async Task<IActionResult> Urunler()
         {
             return View(await _context.Products.ToListAsync());
         }
 
+
+        [Authorize(Roles = "admin")]
         // GET: Products/Create
         public IActionResult Create()
         {
@@ -74,6 +76,8 @@ namespace webodevberk.Controllers
             return View(product);
         }
 
+
+        [Authorize(Roles = "admin")]
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -125,6 +129,8 @@ namespace webodevberk.Controllers
             return View(product);
         }
 
+
+        [Authorize(Roles = "admin")]
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
