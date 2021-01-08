@@ -20,13 +20,14 @@ namespace webodevberk.Controllers
             _context = context;
         }
 
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles ="admin,networkuzmanı")]
         // GET: Products
         public async Task<IActionResult> Index()
         {
             return View(await _context.Products.ToListAsync());
         }
 
+        [Authorize]
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -45,14 +46,14 @@ namespace webodevberk.Controllers
             return View(product);
         }
 
-        [Authorize(Roles = "admin,quest")]
+        [Authorize(Roles = "admin,quest,networkuzmanı,members")]
         public async Task<IActionResult> Urunler()
         {
             return View(await _context.Products.ToListAsync());
         }
 
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin,networkuzmanı")]
         // GET: Products/Create
         public IActionResult Create()
         {
@@ -77,7 +78,7 @@ namespace webodevberk.Controllers
         }
 
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin,networkuzmanı")]
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -130,7 +131,7 @@ namespace webodevberk.Controllers
         }
 
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin,networkuzmanı")]
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
